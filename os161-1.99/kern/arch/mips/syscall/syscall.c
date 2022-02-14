@@ -35,7 +35,7 @@
 #include <thread.h>
 #include <current.h>
 #include <syscall.h>
-
+#include "opt-A1.h"
 
 /*
  * System call dispatcher.
@@ -132,6 +132,11 @@ syscall(struct trapframe *tf)
 #endif // UW
 
 	    /* Add stuff here */
+#if OPT_A1
+	case SYS_fork:
+		err = sys_fork((pid_t *)&retval), tf);
+	break;
+#endif
  
 	default:
 	  kprintf("Unknown syscall %d\n", callno);

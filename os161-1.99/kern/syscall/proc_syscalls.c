@@ -95,3 +95,11 @@ sys_waitpid(pid_t pid,
   return(0);
 }
 
+#if OPT_A1
+int
+sys_fork(pid_t* retval, struct trapframe *tf)
+{
+
+}
+#endif
+
