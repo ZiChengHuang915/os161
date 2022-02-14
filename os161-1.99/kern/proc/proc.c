@@ -67,6 +67,11 @@ static volatile unsigned int proc_count;
 static struct semaphore *proc_count_mutex;
 /* used to signal the kernel menu thread when there are no processes */
 struct semaphore *no_proc_sem;   
+#if OPT_A1
+static volatile unsigned int pid_count;
+static struct semaphore *pid_count_mutex;
+#endif
+
 #endif  // UW
 
 
@@ -207,6 +212,14 @@ proc_bootstrap(void)
   if (no_proc_sem == NULL) {
     panic("could not create no_proc_sem semaphore\n");
   }
+
+#if OPT_A1
+  pid_count = 1;
+  pid_count_mutex = sem_create("pid_count_mutex",1);
+  if (pid_count_mutex == NULL) {
+    panic("could not create pic_count_mutex semaphore\n");
+  }
+#endif
 #endif // UW 
 }
 
@@ -269,6 +282,13 @@ proc_create_runprogram(const char *name)
 	P(proc_count_mutex); 
 	proc_count++;
 	V(proc_count_mutex);
+
+#if OPT_A1
+  P(pid_count_mutex);
+  p_pid = pid_count;
+  pid_count++;
+  V(pid_count_mutex);
+#endif
 #endif // UW
 
 	return proc;
