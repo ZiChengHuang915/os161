@@ -185,11 +185,12 @@ void
 enter_forked_process(void *tf, unsigned long data2) // tf supposed to be struct trapframe*
 {
 #if OPT_A1
-	tf->tf_epc += 4;
-	tf->tf_v0 = 0;
-	struct trapframe tf_stack = *tf;
+	struct trapframe* tf_stack = tf;
+	tf_stack->tf_epc += 4;
+	tf_stack->tf_v0 = 0;
+	
 	kfree(tf);
-	mips_usermode(&tf_stack);
+	mips_usermode(tf_stack);
 
 	(void)data2;
 #endif
