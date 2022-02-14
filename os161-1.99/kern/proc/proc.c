@@ -286,7 +286,7 @@ proc_create_runprogram(const char *name)
 
 #if OPT_A1
   P(pid_count_mutex);
-  p_pid = pid_count;
+  proc->p_pid = pid_count;
   pid_count++;
   V(pid_count_mutex);
 #endif
