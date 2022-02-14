@@ -1,0 +1,295 @@
+====== depend.log ======
+bmake includelinks
+mkdir includelinks
+mkdir includelinks/kern
+ln -s ../../../arch/mips/include includelinks/mips
+ln -s ../../../../arch/mips/include/kern  includelinks/kern/mips
+ln -s ../../../arch/sys161/include includelinks/sys161
+ln -s mips includelinks/machine
+ln -s mips includelinks/kern/machine
+ln -s sys161 includelinks/platform
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes -Werror -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -M ../../../common/libc/printf/__printf.c ../../../common/libc/printf/snprintf.c ../../../common/libc/stdlib/atoi.c ../../../common/libc/string/bzero.c ../../../common/libc/string/memcpy.c ../../../common/libc/string/memmove.c ../../../common/libc/string/strcat.c ../../../common/libc/string/strchr.c ../../../common/libc/string/strcmp.c ../../../common/libc/string/strcpy.c ../../../common/libc/string/strlen.c ../../../common/libc/string/strrchr.c ../../../common/libc/string/strtok_r.c ../../compile/ASST0/autoconf.c ../../dev/generic/beep.c ../../dev/generic/console.c ../../dev/generic/random.c ../../dev/generic/rtclock.c ../../dev/lamebus/beep_ltimer.c ../../dev/lamebus/con_lser.c ../../dev/lamebus/emu.c ../../dev/lamebus/emu_att.c ../../dev/lamebus/lamebus.c ../../dev/lamebus/lhd.c ../../dev/lamebus/lhd_att.c ../../dev/lamebus/lrandom.c ../../dev/lamebus/lrandom_att.c ../../dev/lamebus/lser.c ../../dev/lamebus/lser_att.c ../../dev/lamebus/ltimer.c ../../dev/lamebus/ltimer_att.c ../../dev/lamebus/ltrace.c ../../dev/lamebus/ltrace_att.c ../../dev/lamebus/random_lrandom.c ../../dev/lamebus/rtclock_ltimer.c ../../fs/sfs/sfs_fs.c ../../fs/sfs/sfs_io.c ../../fs/sfs/sfs_vnode.c ../../lib/array.c ../../lib/bitmap.c ../../lib/bswap.c ../../lib/kgets.c ../../lib/kprintf.c ../../lib/misc.c ../../lib/queue.c ../../lib/uio.c ../../proc/proc.c ../../startup/main.c ../../startup/menu.c ../../syscall/file_syscalls.c ../../syscall/loadelf.c ../../syscall/proc_syscalls.c ../../syscall/runprogram.c ../../syscall/time_syscalls.c ../../test/arraytest.c ../../test/bitmaptest.c ../../test/fstest.c ../../test/malloctest.c ../../test/synchtest.c ../../test/threadtest.c ../../test/tt3.c ../../test/uw-tests.c ../../thread/clock.c ../../thread/spinlock.c ../../thread/spl.c ../../thread/synch.c ../../thread/thread.c ../../thread/threadlist.c ../../vfs/device.c ../../vfs/devnull.c ../../vfs/vfscwd.c ../../vfs/vfslist.c ../../vfs/vfslookup.c ../../vfs/vfspath.c ../../vfs/vnode.c ../../vm/kmalloc.c ../../vm/uw-vmstats.c ../../../common/gcc-millicode/adddi3.c ../../../common/gcc-millicode/anddi3.c ../../../common/gcc-millicode/ashldi3.c ../../../common/gcc-millicode/ashrdi3.c ../../../common/gcc-millicode/cmpdi2.c ../../../common/gcc-millicode/divdi3.c ../../../common/gcc-millicode/iordi3.c ../../../common/gcc-millicode/lshldi3.c ../../../common/gcc-millicode/lshrdi3.c ../../../common/gcc-millicode/moddi3.c ../../../common/gcc-millicode/muldi3.c ../../../common/gcc-millicode/negdi2.c ../../../common/gcc-millicode/notdi2.c ../../../common/gcc-millicode/qdivrem.c ../../../common/gcc-millicode/subdi3.c ../../../common/gcc-millicode/ucmpdi2.c ../../../common/gcc-millicode/udivdi3.c ../../../common/gcc-millicode/umoddi3.c ../../../common/gcc-millicode/xordi3.c ../../../common/libc/arch/mips/setjmp.S ../../arch/mips/locore/trap.c ../../arch/mips/syscall/syscall.c ../../arch/mips/thread/cpu.c ../../arch/mips/thread/switch.S ../../arch/mips/thread/switchframe.c ../../arch/mips/thread/thread_machdep.c ../../arch/mips/thread/threadstart.S ../../arch/mips/vm/dumbvm.c ../../arch/mips/vm/ram.c ../../vm/copyinout.c ../../arch/mips/locore/cache-mips161.S ../../arch/mips/locore/exception-mips1.S ../../arch/mips/vm/tlb-mips1.S ../../arch/sys161/dev/lamebus_machdep.c ../../arch/sys161/startup/start.S > .depend
+====== make.log ======
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/printf/__printf.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/printf/snprintf.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/stdlib/atoi.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/bzero.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/memcpy.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/memmove.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/strcat.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/strchr.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/strcmp.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/strcpy.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/strlen.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/strrchr.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/string/strtok_r.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../compile/ASST0/autoconf.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/generic/beep.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/generic/console.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/generic/random.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/generic/rtclock.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/beep_ltimer.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/con_lser.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/emu.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/emu_att.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/lamebus.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/lhd.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/lhd_att.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/lrandom.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/lrandom_att.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/lser.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/lser_att.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/ltimer.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/ltimer_att.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/ltrace.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/ltrace_att.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/random_lrandom.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../dev/lamebus/rtclock_ltimer.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../fs/sfs/sfs_fs.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../fs/sfs/sfs_io.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../fs/sfs/sfs_vnode.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../lib/array.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../lib/bitmap.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../lib/bswap.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../lib/kgets.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../lib/kprintf.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../lib/misc.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../lib/queue.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../lib/uio.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../proc/proc.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../startup/main.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../startup/menu.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../syscall/file_syscalls.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../syscall/loadelf.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../syscall/proc_syscalls.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../syscall/runprogram.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../syscall/time_syscalls.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../test/arraytest.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../test/bitmaptest.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../test/fstest.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../test/malloctest.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../test/synchtest.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../test/threadtest.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../test/tt3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../test/uw-tests.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../thread/clock.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../thread/spinlock.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../thread/spl.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../thread/synch.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../thread/thread.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../thread/threadlist.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vfs/device.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vfs/devnull.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vfs/vfscwd.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vfs/vfslist.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vfs/vfslookup.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vfs/vfspath.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vfs/vnode.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vm/kmalloc.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vm/uw-vmstats.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/adddi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/anddi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/ashldi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/ashrdi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/cmpdi2.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/divdi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/iordi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/lshldi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/lshrdi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/moddi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/muldi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/negdi2.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/notdi2.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/qdivrem.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/subdi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/ucmpdi2.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/udivdi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/umoddi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/gcc-millicode/xordi3.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/arch/mips/setjmp.S
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/locore/trap.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/syscall/syscall.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/thread/cpu.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/thread/switch.S
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/thread/switchframe.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/thread/thread_machdep.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/thread/threadstart.S
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/vm/dumbvm.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/vm/ram.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../vm/copyinout.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/locore/cache-mips161.S
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/locore/exception-mips1.S
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/mips/vm/tlb-mips1.S
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/sys161/dev/lamebus_machdep.c
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../arch/sys161/startup/start.S
+../../conf/newvers.sh ASST0
+*** This is ASST0 build #1 ***
+mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c vers.c
+mips-harvard-os161-ld   -nostdlib -T ../../arch/mips/conf/ldscript __printf.o snprintf.o atoi.o bzero.o memcpy.o memmove.o strcat.o strchr.o strcmp.o strcpy.o strlen.o strrchr.o strtok_r.o autoconf.o beep.o console.o random.o rtclock.o beep_ltimer.o con_lser.o emu.o emu_att.o lamebus.o lhd.o lhd_att.o lrandom.o lrandom_att.o lser.o lser_att.o ltimer.o ltimer_att.o ltrace.o ltrace_att.o random_lrandom.o rtclock_ltimer.o sfs_fs.o sfs_io.o sfs_vnode.o array.o bitmap.o bswap.o kgets.o kprintf.o misc.o queue.o uio.o proc.o main.o menu.o file_syscalls.o loadelf.o proc_syscalls.o runprogram.o time_syscalls.o arraytest.o bitmaptest.o fstest.o malloctest.o synchtest.o threadtest.o tt3.o uw-tests.o clock.o spinlock.o spl.o synch.o thread.o threadlist.o device.o devnull.o vfscwd.o vfslist.o vfslookup.o vfspath.o vnode.o kmalloc.o uw-vmstats.o adddi3.o anddi3.o ashldi3.o ashrdi3.o cmpdi2.o divdi3.o iordi3.o lshldi3.o lshrdi3.o moddi3.o muldi3.o negdi2.o notdi2.o qdivrem.o subdi3.o ucmpdi2.o udivdi3.o umoddi3.o xordi3.o setjmp.o trap.o syscall.o cpu.o switch.o switchframe.o thread_machdep.o threadstart.o dumbvm.o ram.o copyinout.o cache-mips161.o exception-mips1.o tlb-mips1.o lamebus_machdep.o start.o vers.o -o kernel
+mips-harvard-os161-size kernel
+   text	   data	    bss	    dec	    hex	filename
+ 196264	    528	   7872	 204664	  31f78	kernel
+[ -d /os-compile ] || mkdir /os-compile
+cp kernel /os-compile/kernel-ASST0
+rm -f /os-compile/kernel
+ln -s kernel-ASST0 /os-compile/kernel
+====== configure.log ======
+Checking for <err.h>... yes
+Generating defs.mk.
+Configuration ASST0
+Generating files... opt-A0.h opt-A1.h opt-A2.h opt-A3.h opt-A4.h opt-A5.h opt-dumbvm.h opt-net.h opt-netfs.h opt-noasserts.h opt-sfs.h opt-synchprobs.h files.mk Makefile autoconf.h autoconf.c
+Configuration in ../compile/ASST0 done
+Remember to bmake depend
+====== test_public.log ======
+>SPLIT<
+>TEST=tt1<
+
+OS/161 base system version 1.99.05
+Copyright (c) 2000, 2001, 2002, 2003, 2004, 2005, 2008, 2009
+   President and Fellows of Harvard College.  All rights reserved.
+
+Zi Cheng Huang's system version 0 (ASST0 #1)
+
+304k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+
+cpu0: MIPS r3000
+OS/161 kernel: tt1
+Starting thread test...
+012345701234567012345670123456701234567012345670123567012345670123456701234567012345670123456701234567012345670123456701234567012345670123456701234567012344567012345670123546701235467012354670123546701235467012354670135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467021354670213546702135467702135467021356470213564702135647021356470213564702135647023156470231564702315647023156470231564702315640723156407231564072315640723156407231564072315407231654072316540723165407231654072316540723165407231654072316540723165407231654072316540723165407231654072316540723165407231654072316540723165407231654072316540723165407231654072316540723165407231654266
+Thread test done.
+Operation took 0.262671320 seconds
+OS/161 kernel: q
+Shutting down.
+The system is halted.
+>SPLIT<
+>TEST=dth;tt1<
+
+OS/161 base system version 1.99.05
+Copyright (c) 2000, 2001, 2002, 2003, 2004, 2005, 2008, 2009
+   President and Fellows of Harvard College.  All rights reserved.
+
+Zi Cheng Huang's system version 0 (ASST0 #1)
+
+304k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+
+cpu0: MIPS r3000
+OS/161 kernel: dth
+Operation took 0.000020880 seconds
+OS/161 kernel: tt1
+Starting thread test...
+Forking thread: threadtest0
+F0o0rk0i0n0g0 0t0h0r0e0a0d0:0 t0h0r0e0a0d0t0e0s0t01
+F01o01r01k01i01n01g01 01t01h01r01e01a01d01:1 t01h01r01e01a01d01t01e01s01t01201
+F012o012r12k012i012n012g012 012t012h012r012e012a012d01:012 t012h012r012e012a012d012t012e012s012t0123012
+F0312o0312r0312k0312i0312n0312g0312 0123t0123h0123r0123e0123a0123d0123:0123 t0123h023r1023e1023a1023d1023t1023e1023s1023t10234103
+F12034o12034r12034k12034i12034n12034g1203412034 12034t12034h12034r12034e12034a12034d12034:12034 t12034h12034r12034e12034a1234d1234t124e1234s1234t123451234
+F12345o12345r12345k1235i12345n12345g12345 12345t12345h12345r12345e1345a12345d12345:12345 t12345h2345r2345e2345a245d2345t2345e2345s2345t234562345
+F23456o2345r23456k23456i23456n23456g23456 23456t23456h23456r23456e23456a23456d23456:23456 t23456h2345623456r3456e3456a3456d3456t3456e3456s3456t3456345673456
+3456734567345673456734567345673456345673456734567345673456734567345673456745674674567456745674567456745674567456774567456745745674567456745674567456745674567456745674567567456756756756756756756756756756756756756756567567567567567567567567567567567567567676766767676767676767676767676767676767667676767677677777777777777777777777777777
+Thread test done.
+Operation took 0.279170320 seconds
+OS/161 kernel: q
+Shutting down.
+The system is halted.
+>SPLIT<
+>TEST=tt2<
+
+OS/161 base system version 1.99.05
+Copyright (c) 2000, 2001, 2002, 2003, 2004, 2005, 2008, 2009
+   President and Fellows of Harvard College.  All rights reserved.
+
+Zi Cheng Huang's system version 0 (ASST0 #1)
+
+304k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+
+cpu0: MIPS r3000
+OS/161 kernel: tt2
+Starting thread test 2...
+0123456712345607
+Thread test 2 done.
+Operation took 0.668486080 seconds
+OS/161 kernel: q
+Shutting down.
+The system is halted.
+>SPLIT<
+>TEST=dth;tt2<
+
+OS/161 base system version 1.99.05
+Copyright (c) 2000, 2001, 2002, 2003, 2004, 2005, 2008, 2009
+   President and Fellows of Harvard College.  All rights reserved.
+
+Zi Cheng Huang's system version 0 (ASST0 #1)
+
+304k physical memory available
+Device probe...
+lamebus0 (system main bus)
+emu0 at lamebus0
+ltrace0 at lamebus0
+ltimer0 at lamebus0
+beep0 at ltimer0
+rtclock0 at ltimer0
+lrandom0 at lamebus0
+random0 at lrandom0
+lhd0 at lamebus0
+lhd1 at lamebus0
+lser0 at lamebus0
+con0 at lser0
+
+cpu0: MIPS r3000
+OS/161 kernel: dth
+Operation took 0.000020880 seconds
+OS/161 kernel: tt2
+Starting thread test 2...
+Forking thread: threadtest0
+F0orking th0read: threadtest1
+F1orking th1read: threadtest2
+F2orking th2read: threadtest3
+F3orking t3hread: threadtest4
+F4orking t4hread: threadtest5
+F5orking t5hread: threadtest6
+F6orking t6hread: threadtest7
+77
+Thread test 2 done.
+Operation took 0.724086760 seconds
+OS/161 kernel: q
+Shutting down.
+The system is halted.
