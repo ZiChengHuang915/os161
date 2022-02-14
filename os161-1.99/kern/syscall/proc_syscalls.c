@@ -109,6 +109,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   thread_fork("child_thread", child, enter_forked_process, tf, 0);
 
   *retval = 0;
+  return 0;
 }
 #endif
 
