@@ -182,7 +182,16 @@ syscall(struct trapframe *tf)
  * Thus, you can trash it and do things another way if you prefer.
  */
 void
-enter_forked_process(struct trapframe *tf)
+enter_forked_process(struct trapframe *tf, unsigned long data2)
 {
+#if OPT_A1
+	tf->tf_epc += 4;
+	tf->tf_v0 = 0;
+	struct trapframe tf_stack = *tf;
+	kfree(tf);
+	mips_usermode(&tf_stack);
+
+	(void)data2;
+#endif
 	(void)tf;
 }
