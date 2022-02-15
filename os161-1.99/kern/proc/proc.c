@@ -138,7 +138,7 @@ proc_destroy(struct proc *proc)
 	KASSERT(proc != kproc);
 
 #if OPT_A1
-	array_destroy(proc->P_children);
+	array_destroy(proc->p_children);
 #endif
 
 	/*
