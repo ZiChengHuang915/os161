@@ -61,6 +61,7 @@ void sys__exit(int exitcode) {
   /* note: curproc cannot be used after this call */
   proc_remthread(curthread);
   p->p_pid = -1;
+  proc_destroy(p);
       /* if this is the last user process in the system, proc_destroy()
      will wake up the kernel menu thread */
 #if OPT_A1
