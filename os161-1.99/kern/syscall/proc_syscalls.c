@@ -27,7 +27,11 @@ void sys__exit(int exitcode) {
      an unused variable */
   //(void)exitcode;
 
-  /* if this is the last user process in the system, proc_destroy()
+  DEBUG(DB_SYSCALL,"Syscall: _exit(%d)\n",exitcode);
+
+  KASSERT(curproc->p_addrspace != NULL);
+  as_deactivate();
+    /* if this is the last user process in the system, proc_destroy()
      will wake up the kernel menu thread */
 #if OPT_A1
   spinlock_acquire(&p->p_lock);
@@ -42,11 +46,6 @@ void sys__exit(int exitcode) {
 #else 
   proc_destroy(p); //removed on A1 page 16
 #endif
-
-  DEBUG(DB_SYSCALL,"Syscall: _exit(%d)\n",exitcode);
-
-  KASSERT(curproc->p_addrspace != NULL);
-  as_deactivate();
   /*
    * clear p_addrspace before calling as_destroy. Otherwise if
    * as_destroy sleeps (which is quite possible) when we
