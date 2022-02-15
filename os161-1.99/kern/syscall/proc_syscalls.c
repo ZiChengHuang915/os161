@@ -60,12 +60,13 @@ void sys__exit(int exitcode) {
   /* detach this thread from its process */
   /* note: curproc cannot be used after this call */
   proc_remthread(curthread);
-  p->p_pid = -1;
-  proc_destroy(p);
+
       /* if this is the last user process in the system, proc_destroy()
      will wake up the kernel menu thread */
 #if OPT_A1
-  // spinlock_acquire(&p->p_lock);
+  spinlock_acquire(&p->p_lock);
+  spinlock_release(&p->p_lock);
+  proc_destroy(p);
   // if (p->p_parent->p_exitstatus == RUNNING) {
   //   p->p_exitstatus = EXITED;
   //   p->p_exitcode = _MKWAIT_EXIT(exitcode);;
