@@ -12,7 +12,7 @@
 #include <mips/trapframe.h>
 #include "opt-A1.h"
 #include <clock.h>
-#include <limits.h>
+
 #define EXITED 1
 #define RUNNING 0
 

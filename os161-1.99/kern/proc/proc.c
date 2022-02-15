@@ -51,6 +51,7 @@
 #include <synch.h>
 #include <kern/fcntl.h>
 #include "opt-A1.h"
+#include <limits.h>
 #define EXITED 1
 #define RUNNING 0
 
