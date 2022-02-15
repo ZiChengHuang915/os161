@@ -178,11 +178,13 @@ sys_fork(pid_t* retval, struct trapframe *tf)
 
   struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
   if (trapframe_for_child == NULL){
+    kprintf("could not create trapframe_for_child\n");
     return ENOMEM;
   }
 
   struct proc* child = proc_create_runprogram("child");
   if(child == NULL){
+    kprintf("could not create child process\n");
     kfree(trapframe_for_child);
     return ENOMEM;
   }
@@ -191,6 +193,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   array_add(curproc->p_children, child, index_ret);
   ret = as_copy(curproc_getas(), &(child->p_addrspace));
   if (ret) {
+    kprintf("could not copy parent address space\n");
     kfree(trapframe_for_child);
     proc_destroy(child);
     return ENOMEM;
@@ -200,6 +203,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
 
   ret = thread_fork("child_thread", child, thread_fork_temp, trapframe_for_child, 0);
   if (ret) {
+    kprintf("could not fork thread\n");
     as_destroy(child->p_addrspace);
     proc_destroy(child);
     kfree(trapframe_for_child);
