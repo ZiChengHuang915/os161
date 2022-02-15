@@ -25,7 +25,7 @@ void sys__exit(int exitcode) {
   struct proc *p = curproc;
   /* for now, just include this to keep the compiler from complaining about
      an unused variable */
-  (void)exitcode;
+  //(void)exitcode;
 
   DEBUG(DB_SYSCALL,"Syscall: _exit(%d)\n",exitcode);
 
@@ -67,7 +67,7 @@ void sys__exit(int exitcode) {
   spinlock_acquire(&p->p_lock);
   if (p->p_parent->p_exitstatus == RUNNING) {
     p->p_exitstatus = EXITED;
-    p->p_exitcode = p->p_exitstatus; //???
+    p->p_exitcode = exitcode;
     spinlock_release(&p->p_lock);
   } else {
     spinlock_release(&p->p_lock);
