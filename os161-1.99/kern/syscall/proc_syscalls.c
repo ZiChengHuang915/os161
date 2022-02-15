@@ -67,7 +67,7 @@ void sys__exit(int exitcode) {
   //     temp_child->p_parent = NULL;
   //     spinlock_release(&temp_child->p_lock);
   //   }
-  }
+  // }
 #endif
 
   /* detach this thread from its process */
