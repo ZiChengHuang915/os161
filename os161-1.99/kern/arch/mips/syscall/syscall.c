@@ -195,6 +195,6 @@ enter_forked_process(void *tf, unsigned long data2) // tf supposed to be struct 
 	tf_stack.tf_epc += 4;
 	tf_stack.tf_v0 = 0;
 	tf_stack.tf_a3 = 0;
-	mips_usermode(tf_stack);
+	mips_usermode(&tf_stack);
 #endif
 }
