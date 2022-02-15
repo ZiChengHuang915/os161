@@ -196,5 +196,4 @@ enter_forked_process(void *tf, unsigned long data2) // tf supposed to be struct 
 
 	(void)data2;
 #endif
-	(void)tf;
 }
