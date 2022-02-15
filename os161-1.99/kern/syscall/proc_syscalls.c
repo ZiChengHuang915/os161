@@ -173,9 +173,9 @@ thread_fork_temp(void * tf, unsigned long num)
 int
 sys_fork(pid_t* retval, struct trapframe *tf)
 {
-  unsigned* index_ret;
+  /*unsigned* index_ret;
   int ret;
-  kprintf("entering sys_fork\n");
+
   struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
   if (trapframe_for_child == NULL){
     kprintf("could not create trapframe_for_child\n");
@@ -209,7 +209,8 @@ sys_fork(pid_t* retval, struct trapframe *tf)
     kfree(trapframe_for_child);
     return ret;
   }
-
+*/
+void(tf);
   *retval = child->p_pid;
   clocksleep(1);
   return 0;
