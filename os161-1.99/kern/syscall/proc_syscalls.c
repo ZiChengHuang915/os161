@@ -200,7 +200,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   // }
 
   //*trapframe_for_child = *tf;
-  tf;
+  tf->tf_v0 = tf->tf_v0;
 
   // ret = thread_fork("child_thread", child, thread_fork_temp, trapframe_for_child, 0);
   // if (ret) {
