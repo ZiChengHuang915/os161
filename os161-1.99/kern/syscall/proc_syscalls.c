@@ -228,6 +228,24 @@ enter_usermode(void *data1, unsigned long data2)
 	mips_usermode(tf);
 }
 
+static
+int
+setup_forked_trapframe(struct trapframe *old_tf, struct trapframe **new_tf)
+{
+	*new_tf = kmalloc(sizeof(struct trapframe));
+	if (*new_tf == NULL) {
+		return ENOMEM;
+	}
+
+	memcpy((void *) *new_tf, (const void *) old_tf, sizeof(struct trapframe));
+	(*new_tf)->tf_v0 = 0;
+	(*new_tf)->tf_v1 = 0;
+	(*new_tf)->tf_a3 = 0;      /* signal no error */
+	(*new_tf)->tf_epc += 4;
+
+	return 0;
+}
+
 int
 sys_fork(int32_t *retval0, struct trapframe *tf)
 {
@@ -242,12 +260,11 @@ sys_fork(int32_t *retval0, struct trapframe *tf)
 	struct trapframe *new_tf;
 	setup_forked_trapframe(tf, &new_tf);
 
-	*retval0 = new_proc->pid;
+	*retval0 = new_proc->p_pid;
 	ret = thread_fork("new_thread", new_proc, enter_usermode, new_tf, 1);
 	if (ret) {
-		pid_t pid = new_proc->pid;
+		pid_t pid = new_proc->p_pid;
 		proc_destroy(new_proc);
-		pidtable_freepid(pid);
 		kfree(new_tf);
 		return ret;
 	}
