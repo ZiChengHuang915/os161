@@ -171,105 +171,49 @@ thread_fork_temp(void * tf, unsigned long num)
 
 }
 
-// int
-// sys_fork(pid_t* retval, struct trapframe *tf)
-// {
-//   unsigned* index_ret;
-//   int ret;
-
-//   struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
-//   if (trapframe_for_child == NULL){
-//     kprintf("could not create trapframe_for_child\n");
-//     return ENOMEM;
-//   }
-
-//   struct proc* child = proc_create_runprogram("child");
-//   if(child == NULL){
-//     kprintf("could not create child process\n");
-//     kfree(trapframe_for_child);
-//     return ENOMEM;
-//   }
-
-//   child->p_parent = curproc;
-//   array_add(curproc->p_children, child, index_ret);
-//   ret = as_copy(curproc_getas(), &(child->p_addrspace));
-//   if (ret) {
-//     kprintf("could not copy parent address space\n");
-//     kfree(trapframe_for_child);
-//     proc_destroy(child);
-//     return ENOMEM;
-//   }
-
-//   *trapframe_for_child = *tf;
-
-//   ret = thread_fork("child_thread", child, thread_fork_temp, trapframe_for_child, 0);
-//   if (ret) {
-//     kprintf("could not fork thread\n");
-//     as_destroy(child->p_addrspace);
-//     proc_destroy(child);
-//     kfree(trapframe_for_child);
-//     return ret;
-//   }
-
-//   *retval = child->p_pid;
-//   clocksleep(1);
-//   return 0;
-// }
-void enter_usermode(void *data1, unsigned long data2);
-void
-enter_usermode(void *data1, unsigned long data2)
-{
-	(void) data2;
-	void *tf = (void *) curthread->t_stack + 16;
-
-	memcpy(tf, (const void *) data1, sizeof(struct trapframe));
-	kfree((struct trapframe *) data1);
-
-	as_activate();
-	mips_usermode(tf);
-}
-
-static
 int
-setup_forked_trapframe(struct trapframe *old_tf, struct trapframe **new_tf)
+sys_fork(pid_t* retval, struct trapframe *tf)
 {
-	*new_tf = kmalloc(sizeof(struct trapframe));
-	if (*new_tf == NULL) {
-		return ENOMEM;
-	}
+  unsigned* index_ret;
+  int ret;
 
-	memcpy((void *) *new_tf, (const void *) old_tf, sizeof(struct trapframe));
-	(*new_tf)->tf_v0 = 0;
-	(*new_tf)->tf_v1 = 0;
-	(*new_tf)->tf_a3 = 0;      /* signal no error */
-	(*new_tf)->tf_epc += 4;
+  struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
+  if (trapframe_for_child == NULL){
+    kprintf("could not create trapframe_for_child\n");
+    return ENOMEM;
+  }
 
-	return 0;
-}
+  struct proc* child = proc_create_runprogram("child");
+  if(child == NULL){
+    kprintf("could not create child process\n");
+    kfree(trapframe_for_child);
+    return ENOMEM;
+  }
 
-int
-sys_fork(int32_t *retval0, struct trapframe *tf)
-{
-	struct proc *new_proc;
-	int ret;
+  child->p_parent = curproc;
+  array_add(curproc->p_children, child, index_ret);
+  ret = as_copy(curproc_getas(), &(child->p_addrspace));
+  if (ret) {
+    kprintf("could not copy parent address space\n");
+    kfree(trapframe_for_child);
+    proc_destroy(child);
+    return ENOMEM;
+  }
 
-	ret = proc_create_fork("new_proc", &new_proc);
-	if(ret) {
-		return ret;
-	}
+  *trapframe_for_child = *tf;
 
-	struct trapframe *new_tf;
-	setup_forked_trapframe(tf, &new_tf);
+  ret = thread_fork("child_thread", child, thread_fork_temp, trapframe_for_child, 0);
+  if (ret) {
+    kprintf("could not fork thread\n");
+    as_destroy(child->p_addrspace);
+    proc_destroy(child);
+    kfree(trapframe_for_child);
+    return ret;
+  }
 
-	*retval0 = new_proc->p_pid;
-	ret = thread_fork("new_thread", new_proc, enter_usermode, new_tf, 1);
-	if (ret) {
-		proc_destroy(new_proc);
-		kfree(new_tf);
-		return ret;
-	}
-
-	return 0;
+  *retval = child->p_pid;
+  clocksleep(1);
+  return 0;
 }
 #endif
 

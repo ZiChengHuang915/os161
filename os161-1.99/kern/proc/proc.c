@@ -400,39 +400,3 @@ curproc_setas(struct addrspace *newas)
 	spinlock_release(&proc->p_lock);
 	return oldas;
 }
-
-/*
- * Sets up the memory structures for a newly forked process.
- */
-int
-proc_create_fork(const char *name, struct proc **new_proc)
-{
-	int ret;
-	struct proc *proc;
-
-	proc = proc_create(name);
-	if (proc == NULL) {
-		return ENOMEM;
-	}
-
-	if (ret){
-		proc_destroy(proc);
-		return ret;
-	}
-
-	ret = as_copy(curproc->p_addrspace, &proc->p_addrspace);
-	if (ret) {
-		proc_destroy(proc);
-		return ret;
-	}
-
-	spinlock_acquire(&curproc->p_lock);
-	if (curproc->p_cwd != NULL) {
-		VOP_INCREF(curproc->p_cwd);
-		proc->p_cwd = curproc->p_cwd;
-	}
-	spinlock_release(&curproc->p_lock);
-
-	*new_proc = proc;
-	return 0;
-}
