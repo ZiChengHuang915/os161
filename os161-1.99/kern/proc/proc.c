@@ -51,6 +51,8 @@
 #include <synch.h>
 #include <kern/fcntl.h>
 #include "opt-A1.h"
+#define EXITED 1
+#define RUNNING 0
 
 /*
  * The process for the kernel; this holds all the kernel-only threads.
