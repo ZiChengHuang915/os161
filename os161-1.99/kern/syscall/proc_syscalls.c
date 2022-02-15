@@ -42,19 +42,19 @@ void sys__exit(int exitcode) {
   as_destroy(as);
 
 #if OPT_A1
-  // for (int i = 0; i < (int16_t) array_num(p->p_children); i++) {
-  //   struct proc* temp_child = (struct proc*) array_get(p->p_children, i);
-  //   array_remove(p->p_children, i);
+  for (int i = 0; i < (int16_t) array_num(p->p_children); i++) {
+    struct proc* temp_child = (struct proc*) array_get(p->p_children, i);
+    array_remove(p->p_children, i);
 
-  //   spinlock_acquire(&temp_child->p_lock);
-  //   if (temp_child->p_exitstatus == EXITED) {
-  //     spinlock_release(&temp_child->p_lock);
-  //     proc_destroy(temp_child);
-  //   } else {
-  //     temp_child->p_parent = NULL;
-  //     spinlock_release(&temp_child->p_lock);
-  //   }
-  // }
+    spinlock_acquire(&temp_child->p_lock);
+    if (temp_child->p_exitstatus == EXITED) {
+      spinlock_release(&temp_child->p_lock);
+      proc_destroy(temp_child);
+    } else {
+      temp_child->p_parent = NULL;
+      spinlock_release(&temp_child->p_lock);
+    }
+  }
 #endif
 
   /* detach this thread from its process */
@@ -191,8 +191,8 @@ sys_fork(pid_t* retval, struct trapframe *tf)
     return ENOMEM;
   }
 
-  // child->p_parent = curproc;
-  // array_add(curproc->p_children, child, index_ret);
+  child->p_parent = curproc;
+  array_add(curproc->p_children, child, index_ret);
   ret = as_copy(curproc_getas(), &(child->p_addrspace));
   if (ret) {
     kprintf("could not copy parent address space\n");
