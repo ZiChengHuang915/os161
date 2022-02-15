@@ -228,7 +228,7 @@ proc_bootstrap(void)
   }
 
 #if OPT_A1
-  pid_count = 1;
+  pid_count = PID_MIN + 1;
   pid_count_mutex = sem_create("pid_count_mutex",1);
   if (pid_count_mutex == NULL) {
     panic("could not create pic_count_mutex semaphore\n");
