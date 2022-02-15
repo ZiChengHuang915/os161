@@ -210,7 +210,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   //   return ret;
   // }
 
-  retval = child->p_pid;
+  *retval = child->p_pid;
   clocksleep(1);
   return 0;
 }
