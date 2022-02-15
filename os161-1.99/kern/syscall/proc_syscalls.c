@@ -27,6 +27,22 @@ void sys__exit(int exitcode) {
      an unused variable */
   //(void)exitcode;
 
+  /* if this is the last user process in the system, proc_destroy()
+     will wake up the kernel menu thread */
+#if OPT_A1
+  spinlock_acquire(&p->p_lock);
+  if (p->p_parent->p_exitstatus == RUNNING) {
+    p->p_exitstatus = EXITED;
+    p->p_exitcode = exitcode;
+    spinlock_release(&p->p_lock);
+  } else {
+    spinlock_release(&p->p_lock);
+    proc_destroy(p);
+  }
+#else 
+  proc_destroy(p); //removed on A1 page 16
+#endif
+
   DEBUG(DB_SYSCALL,"Syscall: _exit(%d)\n",exitcode);
 
   KASSERT(curproc->p_addrspace != NULL);
@@ -55,22 +71,6 @@ void sys__exit(int exitcode) {
   //     spinlock_release(&temp_child->p_lock);
   //   }
   // }
-#endif
-
-  /* if this is the last user process in the system, proc_destroy()
-     will wake up the kernel menu thread */
-#if OPT_A1
-  spinlock_acquire(&p->p_lock);
-  if (p->p_parent->p_exitstatus == RUNNING) {
-    p->p_exitstatus = EXITED;
-    p->p_exitcode = exitcode;
-    spinlock_release(&p->p_lock);
-  } else {
-    spinlock_release(&p->p_lock);
-    proc_destroy(p);
-  }
-#else 
-  proc_destroy(p); //removed on A1 page 16
 #endif
 
   /* detach this thread from its process */
