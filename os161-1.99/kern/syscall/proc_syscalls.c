@@ -176,18 +176,18 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   // unsigned* index_ret;
   // int ret;
 
-  struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
-  if (trapframe_for_child == NULL){
-    kprintf("could not create trapframe_for_child\n");
-    return ENOMEM;
-  }
+  // struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
+  // if (trapframe_for_child == NULL){
+  //   kprintf("could not create trapframe_for_child\n");
+  //   return ENOMEM;
+  // }
 
-  struct proc* child = proc_create_runprogram("child");
-  if(child == NULL){
-    kprintf("could not create child process\n");
-    kfree(trapframe_for_child);
-    return ENOMEM;
-  }
+  // struct proc* child = proc_create_runprogram("child");
+  // if(child == NULL){
+  //   kprintf("could not create child process\n");
+  //   kfree(trapframe_for_child);
+  //   return ENOMEM;
+  // }
 
   // child->p_parent = curproc;
   // array_add(curproc->p_children, child, index_ret);
