@@ -171,7 +171,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
     as_destroy(child->p_addrspace);
     proc_destroy(child);
     kfree(trapframe_for_child);
-    return result;
+    return ret;
   }
 
   *retval = child->p_pid;
