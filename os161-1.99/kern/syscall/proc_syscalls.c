@@ -66,7 +66,7 @@ void sys__exit(int exitcode) {
 #if OPT_A1
   spinlock_acquire(&p->p_lock);
   if (p->p_parent->p_exitstatus == RUNNING) {
-    p->parent = NULL;
+    p->p_parent = NULL;
     p->p_exitstatus = EXITED;
     p->p_exitcode = _MKWAIT_EXIT(exitcode);
     spinlock_release(&p->p_lock);
