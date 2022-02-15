@@ -134,7 +134,8 @@ sys_waitpid(pid_t pid,
     spinlock_acquire (&temp_child->p_lock);
   }
   spinlock_release (&temp_child->p_lock);
-  exitstatus = temp_child->p_exitcode;
+  //exitstatus = temp_child->p_exitcode;
+  exitstatus = _MKWAIT_EXIT(temp_child->p_exitcode);
   proc_destroy(temp_child);
 #endif
 
@@ -142,7 +143,7 @@ sys_waitpid(pid_t pid,
     return(EINVAL);
   }
   /* for now, just pretend the exitstatus is 0 */
-  exitstatus = _MKWAIT_EXIT();
+  //exitstatus = 0;
   result = copyout((void *)&exitstatus,status,sizeof(int));
   if (result) {
     return(result);
