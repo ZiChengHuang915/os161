@@ -65,8 +65,8 @@ void sys__exit(int exitcode) {
      will wake up the kernel menu thread */
 #if OPT_A1
   spinlock_acquire(&p->p_lock);
-  spinlock_release(&p->p_lock);
-  proc_destroy(p);
+  if (p->p_parent->p_exitstatus == RUNNING) {
+  }
   // if (p->p_parent->p_exitstatus == RUNNING) {
   //   p->p_exitstatus = EXITED;
   //   p->p_exitcode = _MKWAIT_EXIT(exitcode);;
