@@ -43,6 +43,7 @@
  */
 
 #include <types.h>
+#include <kern/errno.h>
 #include <proc.h>
 #include <current.h>
 #include <addrspace.h>
@@ -414,13 +415,12 @@ proc_create_fork(const char *name, struct proc **new_proc)
 		return ENOMEM;
 	}
 
-	ret = pidtable_add(proc, &proc->pid);
 	if (ret){
 		proc_destroy(proc);
 		return ret;
 	}
 
-	ret = as_copy(curproc->p_addrspace, &proc->p_addrspace, proc->pid);
+	ret = as_copy(curproc->p_addrspace, &proc->p_addrspace);
 	if (ret) {
 		proc_destroy(proc);
 		return ret;
@@ -432,11 +432,6 @@ proc_create_fork(const char *name, struct proc **new_proc)
 		proc->p_cwd = curproc->p_cwd;
 	}
 	spinlock_release(&curproc->p_lock);
-
-	struct ft *ft = curproc->proc_ft;
-	lock_acquire(ft->ft_lock);
-	ft_copy(ft, proc->proc_ft);
-	lock_release(ft->ft_lock);
 
 	*new_proc = proc;
 	return 0;
