@@ -11,6 +11,7 @@
 #include <copyinout.h>
 #include <mips/trapframe.h>
 #include "opt-A1.h"
+#include <clock.h>
 
   /* this implementation of sys__exit does not do anything with the exit code */
   /* this needs to be fixed to get exit() and waitpid() working properly */
@@ -109,6 +110,8 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   thread_fork("child_thread", child, enter_forked_process, tf, 0);
 
   *retval = 0;
+
+  clocksleep(1);
   return 0;
 }
 #endif
