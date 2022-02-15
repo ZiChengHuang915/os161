@@ -101,10 +101,10 @@ proc_create(const char *name)
 	}
 
 #if OPT_A1
-	proc->p_children = array_create();
-	proc->p_parent = NULL;
-	proc->p_exitcode = RUNNING;
-	proc->p_exitstatus = RUNNING;
+	// proc->p_children = array_create();
+	// proc->p_parent = NULL;
+	// proc->p_exitcode = RUNNING;
+	// proc->p_exitstatus = RUNNING;
 #endif
 
 	threadarray_init(&proc->p_threads);
@@ -142,7 +142,7 @@ proc_destroy(struct proc *proc)
 	KASSERT(proc != kproc);
 
 #if OPT_A1
-	array_destroy(proc->p_children);
+	// array_destroy(proc->p_children);
 #endif
 
 	/*
