@@ -57,10 +57,6 @@ void sys__exit(int exitcode) {
   // }
 #endif
 
-  /* detach this thread from its process */
-  /* note: curproc cannot be used after this call */
-  proc_remthread(curthread);
-
   /* if this is the last user process in the system, proc_destroy()
      will wake up the kernel menu thread */
 #if OPT_A1
@@ -76,6 +72,10 @@ void sys__exit(int exitcode) {
 #else 
   proc_destroy(p); //removed on A1 page 16
 #endif
+
+  /* detach this thread from its process */
+  /* note: curproc cannot be used after this call */
+  proc_remthread(curthread);
 
   thread_exit();
   /* thread_exit() does not return, so we should never get here */
