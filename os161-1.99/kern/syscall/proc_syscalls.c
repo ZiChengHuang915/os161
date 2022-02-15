@@ -42,7 +42,7 @@ void sys__exit(int exitcode) {
 
 #if OPT_A1
   for (int i = 0; i < (int16_t) array_num(p->p_children); i++) {
-    struct proc temp_child = *((struct proc*) (array_get(p->p_children, i));
+    struct proc temp_child = *((struct proc*) (array_get(p->p_children, i)));
     array_remove(p->p_children, i);
 
     spinlock_acquire(&temp_child->p_lock);
