@@ -99,8 +99,8 @@ proc_create(const char *name)
 #if OPT_A1
 	proc->p_children = array_create();
 	proc->p_parent = NULL;
-	proc->p_exitcode = 0;
-	proc->p_exitstatus = 0;
+	proc->p_exitcode = RUNNING;
+	proc->p_exitstatus = RUNNING;
 #endif
 
 	threadarray_init(&proc->p_threads);
