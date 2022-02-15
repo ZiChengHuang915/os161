@@ -104,7 +104,6 @@ sys_waitpid(pid_t pid,
 {
   int exitstatus;
   int result;
-  pid_t curpid = curproc->p_pid;
 
   if(curproc->p_pid == pid){
 		return ECHILD;
