@@ -42,19 +42,19 @@ void sys__exit(int exitcode) {
   as_destroy(as);
 
 #if OPT_A1
-  for (int i = 0; i < (int16_t) array_num(p->p_children); i++) {
-    struct proc* temp_child = (struct proc*) array_get(p->p_children, i);
-    array_remove(p->p_children, i);
+  // for (int i = 0; i < (int16_t) array_num(p->p_children); i++) {
+  //   struct proc* temp_child = (struct proc*) array_get(p->p_children, i);
+  //   array_remove(p->p_children, i);
 
-    spinlock_acquire(&temp_child->p_lock);
-    if (temp_child->p_exitstatus == EXITED) {
-      spinlock_release(&temp_child->p_lock);
-      proc_destroy(temp_child);
-    } else {
-      temp_child->p_parent = NULL;
-      spinlock_release(&temp_child->p_lock);
-    }
-  }
+  //   spinlock_acquire(&temp_child->p_lock);
+  //   if (temp_child->p_exitstatus == EXITED) {
+  //     spinlock_release(&temp_child->p_lock);
+  //     proc_destroy(temp_child);
+  //   } else {
+  //     temp_child->p_parent = NULL;
+  //     spinlock_release(&temp_child->p_lock);
+  //   }
+  // }
 #endif
 
   /* detach this thread from its process */
@@ -123,29 +123,29 @@ sys_waitpid(pid_t pid,
      Fix this!
   */
 #if OPT_A1
-  // bool found = false;
-  // struct proc* temp_child = NULL;
-  // for (int i = 0; i < (int16_t) array_num(curproc->p_children); i++) {
-  //   if (((struct proc*) array_get(curproc->p_children, i))->p_pid == pid) {
-  //     found = true;
-  //     temp_child = (struct proc*) array_get(curproc->p_children, i);
-  //     array_remove(curproc->p_children, i);
-  //     break;
-  //   }
-  // }
-  // if (!found) {
-  //   return(ESRCH);
-  // }
-  // spinlock_acquire (&temp_child->p_lock);
-  // while (!temp_child->p_exitstatus) {
-  //   spinlock_release (&temp_child->p_lock);
-  //   clocksleep (1);
-  //   spinlock_acquire (&temp_child->p_lock);
-  // }
-  // spinlock_release (&temp_child->p_lock);
-  // //exitstatus = temp_child->p_exitcode;
-  // exitstatus = _MKWAIT_EXIT(temp_child->p_exitcode);
-  // proc_destroy(temp_child);
+  bool found = false;
+  struct proc* temp_child = NULL;
+  for (int i = 0; i < (int16_t) array_num(curproc->p_children); i++) {
+    if (((struct proc*) array_get(curproc->p_children, i))->p_pid == pid) {
+      found = true;
+      temp_child = (struct proc*) array_get(curproc->p_children, i);
+      array_remove(curproc->p_children, i);
+      break;
+    }
+  }
+  if (!found) {
+    return(ESRCH);
+  }
+  spinlock_acquire (&temp_child->p_lock);
+  while (!temp_child->p_exitstatus) {
+    spinlock_release (&temp_child->p_lock);
+    clocksleep (1);
+    spinlock_acquire (&temp_child->p_lock);
+  }
+  spinlock_release (&temp_child->p_lock);
+  //exitstatus = temp_child->p_exitcode;
+  exitstatus = _MKWAIT_EXIT(temp_child->p_exitcode);
+  proc_destroy(temp_child);
 #endif
 
   if (options != 0) {
