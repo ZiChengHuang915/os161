@@ -104,6 +104,16 @@ sys_waitpid(pid_t pid,
 {
   int exitstatus;
   int result;
+  pid_t curpid = curproc->p_pid;
+  if(pid_getparentpid(pid) != curpid) {
+    return ECHILD;
+  }
+  if(curproc->p_pid == pid){
+		return ECHILD;
+	}
+  if(status == NULL) {
+    return EFAULT;
+  }
 
   /* this is just a stub implementation that always reports an
      exit status of 0, regardless of the actual exit status of
