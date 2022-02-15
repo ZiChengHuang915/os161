@@ -69,9 +69,9 @@ void sys__exit(int exitcode) {
     p->p_exitstatus = EXITED;
     p->p_exitcode = _MKWAIT_EXIT(exitcode);
     spinlock_release(&p->p_lock);
-  } else {
-    spinlock_release(&p->p_lock);
-    proc_destroy(p);
+  // } else {
+  //   spinlock_release(&p->p_lock);
+  //   proc_destroy(p);
   }
 #else 
   proc_destroy(p); //removed on A1 page 16
