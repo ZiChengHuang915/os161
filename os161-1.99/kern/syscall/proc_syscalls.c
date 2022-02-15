@@ -141,7 +141,7 @@ thread_fork_temp(void * tf, unsigned long num)
 int
 sys_fork(pid_t* retval, struct trapframe *tf)
 {
-  unsigned* index_ret;
+  /*unsigned* index_ret;
 
   struct proc* child = proc_create_runprogram("child");
   child->p_parent = curproc;
@@ -155,7 +155,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
 
   *retval = child->p_pid;
   clocksleep(1);
-  return 0;
+  return 0;*/
 }
 #endif
 
