@@ -128,6 +128,7 @@ sys_waitpid(pid_t pid,
 }
 
 #if OPT_A1
+void thread_fork_temp(void * tf, unsigned long num);
 void
 thread_fork_temp(void * tf, unsigned long num)
 {
