@@ -150,7 +150,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
   *trapframe_for_child = *tf;
 
-  thread_fork("child_thread", child, enter_forked_process, trapframe_for_child, 0);
+  thread_fork("child_thread", child, thread_fork_temp, trapframe_for_child, 0);
 
   *retval = child->p_pid;
   clocksleep(1);
