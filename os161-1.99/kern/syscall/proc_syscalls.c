@@ -136,7 +136,6 @@ sys_waitpid(pid_t pid,
   // if (!found) {
   //   return(ESRCH);
   // }
-
   // spinlock_acquire (&temp_child->p_lock);
   // while (!temp_child->p_exitstatus) {
   //   spinlock_release (&temp_child->p_lock);
@@ -153,7 +152,7 @@ sys_waitpid(pid_t pid,
     return(EINVAL);
   }
   /* for now, just pretend the exitstatus is 0 */
-  exitstatus = 0;
+  //exitstatus = 0;
   result = copyout((void *)&exitstatus,status,sizeof(int));
   if (result) {
     return(result);
