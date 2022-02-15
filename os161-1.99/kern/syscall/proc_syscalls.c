@@ -174,45 +174,44 @@ thread_fork_temp(void * tf, unsigned long num)
 int
 sys_fork(pid_t* retval, struct trapframe *tf)
 {
-  // unsigned* index_ret;
-  // int ret;
+  unsigned* index_ret;
+  int ret;
 
-  // struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
-  // if (trapframe_for_child == NULL){
-  //   kprintf("could not create trapframe_for_child\n");
-  //   return ENOMEM;
-  // }
+  struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
+  if (trapframe_for_child == NULL){
+    kprintf("could not create trapframe_for_child\n");
+    return ENOMEM;
+  }
 
-  // struct proc* child = proc_create_runprogram("child");
-  // if(child == NULL){
-  //   kprintf("could not create child process\n");
-  //   kfree(trapframe_for_child);
-  //   return ENOMEM;
-  // }
+  struct proc* child = proc_create_runprogram("child");
+  if(child == NULL){
+    kprintf("could not create child process\n");
+    kfree(trapframe_for_child);
+    return ENOMEM;
+  }
 
-  // child->p_parent = curproc;
-  // array_add(curproc->p_children, child, index_ret);
-  // ret = as_copy(curproc_getas(), &(child->p_addrspace));
-  // if (ret) {
-  //   kprintf("could not copy parent address space\n");
-  //   kfree(trapframe_for_child);
-  //   proc_destroy(child);
-  //   return ENOMEM;
-  // }
+  child->p_parent = curproc;
+  array_add(curproc->p_children, child, index_ret);
+  ret = as_copy(curproc_getas(), &(child->p_addrspace));
+  if (ret) {
+    kprintf("could not copy parent address space\n");
+    kfree(trapframe_for_child);
+    proc_destroy(child);
+    return ENOMEM;
+  }
 
-  //*trapframe_for_child = *tf;
-  tf->tf_v0 = tf->tf_v0;
+  *trapframe_for_child = *tf;
 
-  // ret = thread_fork("child_thread", child, thread_fork_temp, trapframe_for_child, 0);
-  // if (ret) {
-  //   kprintf("could not fork thread\n");
-  //   as_destroy(child->p_addrspace);
-  //   proc_destroy(child);
-  //   kfree(trapframe_for_child);
-  //   return ret;
-  // }
+  ret = thread_fork("child_thread", child, thread_fork_temp, trapframe_for_child, 0);
+  if (ret) {
+    kprintf("could not fork thread\n");
+    as_destroy(child->p_addrspace);
+    proc_destroy(child);
+    kfree(trapframe_for_child);
+    return ret;
+  }
 
-  *retval = 0;//child->p_pid;
+  *retval = child->p_pid;
   clocksleep(1);
   return 0;
 }
