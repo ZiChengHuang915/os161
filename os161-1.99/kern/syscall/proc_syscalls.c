@@ -26,7 +26,7 @@ void sys__exit(int exitcode) {
   /* for now, just include this to keep the compiler from complaining about
      an unused variable */
   //(void)exitcode;
-
+  spinlock_acquire(&p->p_lock);
   DEBUG(DB_SYSCALL,"Syscall: _exit(%d)\n",exitcode);
 
   KASSERT(curproc->p_addrspace != NULL);
@@ -64,7 +64,7 @@ void sys__exit(int exitcode) {
       /* if this is the last user process in the system, proc_destroy()
      will wake up the kernel menu thread */
 #if OPT_A1
-  spinlock_acquire(&p->p_lock);
+  
   if (p->p_parent->p_exitstatus == RUNNING) {
     p->p_exitstatus = EXITED;
     p->p_exitcode = exitcode;
