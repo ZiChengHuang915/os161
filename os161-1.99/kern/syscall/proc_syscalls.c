@@ -73,7 +73,7 @@ void sys__exit(int exitcode) {
   //   spinlock_release(&p->p_lock);
   //   proc_destroy(p);
   // }
-#else 
+//#else 
   proc_destroy(p); //removed on A1 page 16
 #endif
 
@@ -174,7 +174,7 @@ thread_fork_temp(void * tf, unsigned long num)
 int
 sys_fork(pid_t* retval, struct trapframe *tf)
 {
-  unsigned* index_ret;
+  //unsigned* index_ret;
   int ret;
 
   struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
