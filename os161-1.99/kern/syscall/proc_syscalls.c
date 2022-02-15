@@ -175,7 +175,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
 {
   unsigned* index_ret;
   int ret;
-
+  kprintf("entering sys_fork\n");
   struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
   if (trapframe_for_child == NULL){
     kprintf("could not create trapframe_for_child\n");
