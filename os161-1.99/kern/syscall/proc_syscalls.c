@@ -41,8 +41,8 @@ void sys__exit(int exitcode) {
   as_destroy(as);
 
 #if OPT_A1
-  for (int i = 0; i < array_num(p->p_children); i++) {
-    proc struct temp_child = *(array_get(p->p_children, i));
+  for (int i = 0; i < (int16_t) array_num(p->p_children); i++) {
+    struct proc temp_child = *(array_get(p->p_children, i));
     array_remove(p->p_children, i);
 
     spinlock_acquire(&temp_child->p_lock);
