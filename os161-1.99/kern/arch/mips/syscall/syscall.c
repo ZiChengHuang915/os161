@@ -109,40 +109,41 @@ syscall(struct trapframe *tf)
 				 (userptr_t)tf->tf_a1);
 		break;
 #ifdef UW
-	case SYS_write:
-	  err = sys_write((int)tf->tf_a0,
-			  (userptr_t)tf->tf_a1,
-			  (int)tf->tf_a2,
-			  (int *)(&retval));
-	  break;
-	case SYS__exit:
-	  sys__exit((int)tf->tf_a0);
-	  /* sys__exit does not return, execution should not get here */
-	  panic("unexpected return from sys__exit");
-	  break;
-	case SYS_getpid:
-	  err = sys_getpid((pid_t *)&retval);
-	  break;
-	case SYS_waitpid:
-	  err = sys_waitpid((pid_t)tf->tf_a0,
-			    (userptr_t)tf->tf_a1,
-			    (int)tf->tf_a2,
-			    (pid_t *)&retval);
-	  break;
+		case SYS_write:
+		err = sys_write((int)tf->tf_a0,
+				(userptr_t)tf->tf_a1,
+				(int)tf->tf_a2,
+				(int *)(&retval));
+		break;
+		case SYS__exit:
+		sys__exit((int)tf->tf_a0);
+		/* sys__exit does not return, execution should not get here */
+		panic("unexpected return from sys__exit");
+		break;
+		case SYS_getpid:
+		err = sys_getpid((pid_t *)&retval);
+		break;
+		case SYS_waitpid:
+		err = sys_waitpid((pid_t)tf->tf_a0,
+					(userptr_t)tf->tf_a1,
+					(int)tf->tf_a2,
+					(pid_t *)&retval);
+		break;
 #endif // UW
 
 	    /* Add stuff here */
 #if OPT_A1
-	case SYS_fork:
-		//err = sys_fork((pid_t *)&retval, tf);
-	break;
+		case SYS_fork:
+			//err = sys_fork((pid_t *)&retval, tf);
+			err = sys_getpid((pid_t *)&retval);
+		break;
 #endif
  
-	default:
-	  kprintf("Unknown syscall %d\n", callno);
-	  err = ENOSYS;
-	  break;
-	}
+		default:
+		kprintf("Unknown syscall %d\n", callno);
+		err = ENOSYS;
+		break;
+		}
 
 
 	if (err) {
