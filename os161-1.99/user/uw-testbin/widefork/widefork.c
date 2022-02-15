@@ -26,7 +26,9 @@ int
 dofork(int childnum) 
 {
   pid_t pid;
+  putchar('1');
   pid = fork();
+  putchar('2');
   if (pid < 0) {
     errx(1,"fork %d",childnum);
   }
