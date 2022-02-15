@@ -128,6 +128,15 @@ sys_waitpid(pid_t pid,
 }
 
 #if OPT_A1
+void
+thread_fork_temp(void * tf, unsigned long num)
+{
+  (void)num;
+
+  enter_forked_process((struct trapframe *) tf);
+
+}
+
 int
 sys_fork(pid_t* retval, struct trapframe *tf)
 {

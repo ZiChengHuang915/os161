@@ -182,14 +182,11 @@ syscall(struct trapframe *tf)
  * Thus, you can trash it and do things another way if you prefer.
  */
 void
-enter_forked_process(void *tf, unsigned long data2) // tf supposed to be struct trapframe*
+enter_forked_process(struct trapframe *tf) // tf supposed to be struct trapframe*
 {
 #if OPT_A1
-	(void)data2;
-
-	struct trapframe* temp = (struct trapframe*) tf;
 	struct trapframe tf_stack;
-	tf_stack = *temp;
+	tf_stack = *tf;
 	kfree(tf);
 
 	tf_stack.tf_epc += 4;
