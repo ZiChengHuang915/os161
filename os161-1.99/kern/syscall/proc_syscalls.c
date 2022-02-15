@@ -215,6 +215,7 @@ thread_fork_temp(void * tf, unsigned long num)
 //   clocksleep(1);
 //   return 0;
 // }
+void enter_usermode(void *data1, unsigned long data2);
 void
 enter_usermode(void *data1, unsigned long data2)
 {
