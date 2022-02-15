@@ -67,6 +67,7 @@ void sys__exit(int exitcode) {
   spinlock_acquire(&p->p_lock);
   p->p_exitstatus = EXITED;
     p->p_exitcode = _MKWAIT_EXIT(exitcode);
+    spinlock_release(&p->p_lock);
     proc_destroy(p);
   // if (p->p_parent->p_exitstatus == RUNNING) {
   //   p->p_exitstatus = EXITED;
