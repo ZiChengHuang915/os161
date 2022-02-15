@@ -199,7 +199,8 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   //   return ENOMEM;
   // }
 
-  *trapframe_for_child = *tf;
+  //*trapframe_for_child = *tf;
+  tf;
 
   // ret = thread_fork("child_thread", child, thread_fork_temp, trapframe_for_child, 0);
   // if (ret) {
@@ -210,7 +211,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   //   return ret;
   // }
 
-  *retval = child->p_pid;
+  *retval = 0;//child->p_pid;
   clocksleep(1);
   return 0;
 }
