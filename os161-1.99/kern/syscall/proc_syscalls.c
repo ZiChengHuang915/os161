@@ -12,8 +12,8 @@
 #include <mips/trapframe.h>
 #include "opt-A1.h"
 #include <clock.h>
-#define EXITED 0
-#define RUNNING 1
+#define EXITED 1
+#define RUNNING 0
 
   /* this implementation of sys__exit does not do anything with the exit code */
   /* this needs to be fixed to get exit() and waitpid() working properly */
@@ -113,12 +113,36 @@ sys_waitpid(pid_t pid,
 
      Fix this!
   */
+#if OPT_A1
+  bool found = false;
+  struct proc* temp_child = NULL;
+  for (int i = 0; i < (int16_t) array_num(curproc->p_children); i++) {
+    if (((struct proc*) array_get(curproc->p_children, i))->p_pid == pid) {
+      found = true;
+      temp_child = (struct proc*) array_get(curproc->p_children, i);
+      array_remove(curproc->p_children, i);
+      break;
+    }
+  }
+  if (!found) {
+    return(ESRCH);
+  }
+  spinlock_acquire (&temp_child->p_lock);
+  while (!temp_child->p_exitstatus) {
+    spinlock_release (&temp_child->p_lock);
+    clocksleep (1);
+    spinlock_acquire (&temp_child->p_lock);
+  }
+  spinlock_release (&temp_child->p_lock);
+  exitstatus = temp_child->p_exitcode;
+  proc_destroy(temp_child);
+#endif
 
   if (options != 0) {
     return(EINVAL);
   }
   /* for now, just pretend the exitstatus is 0 */
-  exitstatus = 0;
+  exitstatus = _MKWAIT_EXIT();
   result = copyout((void *)&exitstatus,status,sizeof(int));
   if (result) {
     return(result);
