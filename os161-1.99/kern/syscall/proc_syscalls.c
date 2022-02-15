@@ -12,6 +12,8 @@
 #include <mips/trapframe.h>
 #include "opt-A1.h"
 #include <clock.h>
+#define EXITED 0
+#define RUNNING 1
 
   /* this implementation of sys__exit does not do anything with the exit code */
   /* this needs to be fixed to get exit() and waitpid() working properly */
@@ -44,8 +46,20 @@ void sys__exit(int exitcode) {
 
   /* if this is the last user process in the system, proc_destroy()
      will wake up the kernel menu thread */
-  proc_destroy(p);
-  
+#if OPT_A1
+  spinlock_acquire(&p->p_lock);
+  if (p->p_parent) {
+    p->p_exitstatus = EXITED;
+    p->p_exitcode = p->p_exitstatus; //???
+    spinlock_release(&p->p_lock);
+  } else {
+    spinlock_release(&p->p_lock);
+    proc_destroy(p);
+  }
+#else 
+  proc_destroy(p); //removed on A1 page 16
+#endif
+
   thread_exit();
   /* thread_exit() does not return, so we should never get here */
   panic("return from thread_exit in sys_exit\n");
@@ -101,7 +115,11 @@ sys_waitpid(pid_t pid,
 int
 sys_fork(pid_t* retval, struct trapframe *tf)
 {
+  unsigned* index_ret;
+
   struct proc* child = proc_create_runprogram("child");
+  child->p_parent = curproc;
+  array_add(curproc->p_children, child, index_ret);
   as_copy(curproc->p_addrspace, &child->p_addrspace);
 
   struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));

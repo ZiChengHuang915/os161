@@ -96,6 +96,13 @@ proc_create(const char *name)
 		return NULL;
 	}
 
+#if OPT_A1
+	proc->p_children = array_create();
+	proc->p_parent = NULL;
+	proc->p_exitcode = 0;
+	proc->p_exitstatus = 0;
+#endif
+
 	threadarray_init(&proc->p_threads);
 	spinlock_init(&proc->p_lock);
 
@@ -129,6 +136,10 @@ proc_destroy(struct proc *proc)
 
 	KASSERT(proc != NULL);
 	KASSERT(proc != kproc);
+
+#if OPT_A1
+	array_destroy(proc->P_children);
+#endif
 
 	/*
 	 * We don't take p_lock in here because we must have the only
