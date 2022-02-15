@@ -102,14 +102,14 @@ int
 sys_fork(pid_t* retval, struct trapframe *tf)
 {
   struct proc* child = proc_create_runprogram("child");
-  as_copy(curproc_getas(), &(child->p_addrspace));
+  as_copy(curproc_getas(), &child->p_addrspace);
 
   struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
   *trapframe_for_child = *tf;
-  *retval = 0;
 
-  thread_fork("child_thread", child, enter_forked_process, tf, 0);
+  thread_fork("child_thread", child, enter_forked_process, trapframe_for_child, 0);
 
+  *retval = child->p_pid;
   clocksleep(1);
   return 0;
 }
