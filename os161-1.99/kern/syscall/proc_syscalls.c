@@ -210,7 +210,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
     return ENOMEM;
   }
 
-  //child->p_parent = curproc;
+  child->p_parent = curproc;
   //array_add(curproc->p_children, child, index_ret);
   ret = as_copy(curproc_getas(), &(child->p_addrspace));
   if (ret) {
