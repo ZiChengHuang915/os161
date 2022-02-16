@@ -89,7 +89,7 @@ void sys__exit(int exitcode) {
     proc_destroy(p);
   }
 #endif
-  proc_destroy(p); //removed on A1 page 16
+  //proc_destroy(p); //removed on A1 page 16
 
   thread_exit();
   /* thread_exit() does not return, so we should never get here */
