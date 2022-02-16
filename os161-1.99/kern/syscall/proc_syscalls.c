@@ -194,7 +194,7 @@ thread_fork_temp(void * tf, unsigned long num)
 int
 sys_fork(pid_t* retval, struct trapframe *tf)
 {
-  //unsigned* index_ret;
+  unsigned* index_ret = NULL;
   int ret;
 
   struct trapframe* trapframe_for_child = kmalloc(sizeof(struct trapframe));
