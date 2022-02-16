@@ -82,7 +82,7 @@ void sys__exit(int exitcode) {
   if (p->p_parent != NULL) {
     p->p_parent = NULL;
     p->p_exitstatus = EXITED;
-    p->p_exitcode = _MKWAIT_EXIT(exitcode);
+    p->p_exitcode = exitcode;
     spinlock_release(&p->p_lock);
   } else {
     spinlock_release(&p->p_lock);
