@@ -42,19 +42,19 @@ void sys__exit(int exitcode) {
   as_destroy(as);
 
 #if OPT_A1
-  // while ((int16_t) array_num(p->p_children) > 0) {
-  //   struct proc* temp_child = (struct proc*) array_get(p->p_children, 0);
-  //   array_remove(p->p_children, 0);
+  while ((int16_t) array_num(p->p_children) > 0) {
+    struct proc* temp_child = (struct proc*) array_get(p->p_children, 0);
+    array_remove(p->p_children, 0);
 
-  //   spinlock_acquire(&temp_child->p_lock);
-  //   if (temp_child->p_exitstatus == EXITED) {
-  //     spinlock_release(&temp_child->p_lock);
-  //     proc_destroy(temp_child);
-  //   } else {
-  //     temp_child->p_parent = NULL;
-  //     spinlock_release(&temp_child->p_lock);
-  //   }
-  // }
+    spinlock_acquire(&temp_child->p_lock);
+    if (temp_child->p_exitstatus == EXITED) {
+      spinlock_release(&temp_child->p_lock);
+      proc_destroy(temp_child);
+    } else {
+      temp_child->p_parent = NULL;
+      spinlock_release(&temp_child->p_lock);
+    }
+  }
 
   // for (int i = 0; i < (int16_t) array_num(p->p_children); i++) {
   //   struct proc* temp_child = (struct proc*) array_get(p->p_children, i);
