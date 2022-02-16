@@ -136,45 +136,45 @@ sys_waitpid(pid_t pid,
      Fix this!
   */
 #if OPT_A1
-  // bool found = false;
-  // struct proc* temp_child = NULL;
-  // while ((int16_t) array_num(curproc->p_children) > 0) {
-  //   if (((struct proc*) array_get(curproc->p_children, 0))->p_pid == pid) {
+  bool found = false;
+  struct proc* temp_child = NULL;
+  while ((int16_t) array_num(curproc->p_children) > 0) {
+    if (((struct proc*) array_get(curproc->p_children, 0))->p_pid == pid) {
+      found = true;
+      temp_child = (struct proc*) array_get(curproc->p_children, 0);
+      array_remove(curproc->p_children, 0);
+      break;
+    }
+  }
+  
+  // for (int i = 0; i < (int16_t) array_num(curproc->p_children); i++) {
+  //   if (((struct proc*) array_get(curproc->p_children, i))->p_pid == pid) {
   //     found = true;
-  //     temp_child = (struct proc*) array_get(curproc->p_children, 0);
-  //     array_remove(curproc->p_children, 0);
+  //     temp_child = (struct proc*) array_get(curproc->p_children, i);
+  //     array_remove(curproc->p_children, i);
   //     break;
   //   }
   // }
-  
-  // // for (int i = 0; i < (int16_t) array_num(curproc->p_children); i++) {
-  // //   if (((struct proc*) array_get(curproc->p_children, i))->p_pid == pid) {
-  // //     found = true;
-  // //     temp_child = (struct proc*) array_get(curproc->p_children, i);
-  // //     array_remove(curproc->p_children, i);
-  // //     break;
-  // //   }
-  // // }
-  // if (!found) {
-  //   return(ESRCH);
-  // }
-  // spinlock_acquire (&temp_child->p_lock);
-  // while (!temp_child->p_exitstatus) {
-  //   spinlock_release (&temp_child->p_lock);
-  //   clocksleep (1);
-  //   spinlock_acquire (&temp_child->p_lock);
-  // }
-  // spinlock_release (&temp_child->p_lock);
-  // //exitstatus = temp_child->p_exitcode;
-  // exitstatus = _MKWAIT_EXIT(temp_child->p_exitcode);
-  // proc_destroy(temp_child);
+  if (!found) {
+    return(ESRCH);
+  }
+  spinlock_acquire (&temp_child->p_lock);
+  while (!temp_child->p_exitstatus) {
+    spinlock_release (&temp_child->p_lock);
+    clocksleep (1);
+    spinlock_acquire (&temp_child->p_lock);
+  }
+  spinlock_release (&temp_child->p_lock);
+  //exitstatus = temp_child->p_exitcode;
+  exitstatus = _MKWAIT_EXIT(temp_child->p_exitcode);
+  proc_destroy(temp_child);
 #endif
 
   if (options != 0) {
     return(EINVAL);
   }
   /* for now, just pretend the exitstatus is 0 */
-  exitstatus = 0;
+  //exitstatus = 0;
   result = copyout((void *)&exitstatus,status,sizeof(int));
   if (result) {
     return(result);
