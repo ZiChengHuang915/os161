@@ -135,13 +135,15 @@ sys_waitpid(pid_t pid,
 #if OPT_A1
   bool found = false;
   struct proc* temp_child = NULL;
-  while ((int16_t) array_num(curproc->p_children) > 0) {
-    if (((struct proc*) array_get(curproc->p_children, 0))->p_pid == pid) {
+  int index = 0;
+  while ((int16_t) array_num(curproc->p_children) > index) {
+    if (((struct proc*) array_get(curproc->p_children, index))->p_pid == pid) {
       found = true;
-      temp_child = (struct proc*) array_get(curproc->p_children, 0);
-      array_remove(curproc->p_children, 0);
+      temp_child = (struct proc*) array_get(curproc->p_children, index);
+      array_remove(curproc->p_children, index);
       break;
     }
+    index++;
   }
   
   // for (int i = 0; i < (int16_t) array_num(curproc->p_children); i++) {
