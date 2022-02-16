@@ -88,9 +88,8 @@ void sys__exit(int exitcode) {
   //   spinlock_release(&p->p_lock);
   //   proc_destroy(p);
   // }
-#else 
-  proc_destroy(p); //removed on A1 page 16
 #endif
+  proc_destroy(p); //removed on A1 page 16
 
   thread_exit();
   /* thread_exit() does not return, so we should never get here */
