@@ -211,7 +211,7 @@ sys_fork(pid_t* retval, struct trapframe *tf)
   }
 
   child->p_parent = curproc;
-  //array_add(curproc->p_children, child, index_ret);
+  array_add(curproc->p_children, child, index_ret);
   ret = as_copy(curproc_getas(), &(child->p_addrspace));
   if (ret) {
     kprintf("could not copy parent address space\n");
