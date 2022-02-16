@@ -120,9 +120,6 @@ sys_waitpid(pid_t pid,
   int exitstatus;
   int result;
 
-  if(curproc->p_pid == pid){
-		return ECHILD;
-	}
   if(status == NULL) {
     return EFAULT;
   }
