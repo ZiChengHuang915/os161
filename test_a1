@@ -1,0 +1,10 @@
+#!/ bin/sh
+OS161ROOT="$HOME/cs350-os161/root"
+CONF="sys161.conf"
+KERNEL="kernel-ASST2"
+OLDDIR="$PWD"
+cd "$OS161ROOT"
+sys161 -c $CONF $KERNEL "p uw-testbin/pidcheck;p uw-testbin/pidcheck;q;"
+sys161 -c $CONF $KERNEL "p uw-testbin/widefork;q"
+sys161 -c $CONF $KERNEL "p testbin/forktest;q"
+cd $OLDDIR
