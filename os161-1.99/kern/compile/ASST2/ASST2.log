@@ -49,15 +49,15 @@ Unknown syscall 0
 (program name unknown): fork: No such system call
 3
 (program name unknown): Complete.
-Operation took 0.232190857 seconds
+Operation took 0.231986537 seconds
 OS/161 kernel: q
 Shutting down.
 The system is halted.
-sys161: 10362591 cycles (8996152 run, 1366439 global-idle)
-sys161:   cpu0: 8933983 kern, 62169 user, 0 idle)
-sys161: 1709 irqs 3318 exns 0r/0w disk 0r/990w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.358424 seconds (28.9115 mhz)
-sys161: Elapsed virtual time: 0.414503657 seconds (25 mhz)
+sys161: 10357636 cycles (8992097 run, 1365539 global-idle)
+sys161:   cpu0: 8929928 kern, 62169 user, 0 idle)
+sys161: 1708 irqs 3318 exns 0r/0w disk 0r/990w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.369523 seconds (28.0297 mhz)
+sys161: Elapsed virtual time: 0.414305457 seconds (25 mhz)
 >SPLIT<
 >TEST=onefork_custom_0<
 >Program Output<
@@ -88,15 +88,15 @@ cpu0: MIPS r3000
 OS/161 kernel: p uw-testbin/onefork
 Unknown syscall 0
 (program name unknown): fork: No such system call
-Operation took 0.091191177 seconds
+Operation took 0.091025657 seconds
 OS/161 kernel: q
 Shutting down.
 The system is halted.
-sys161: 6846118 cycles (5482059 run, 1364059 global-idle)
-sys161:   cpu0: 5481342 kern, 717 user, 0 idle)
-sys161: 1349 irqs 23 exns 0r/0w disk 0r/709w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.265426 seconds (25.7929 mhz)
-sys161: Elapsed virtual time: 0.273844737 seconds (25 mhz)
+sys161: 6843227 cycles (5480389 run, 1362838 global-idle)
+sys161:   cpu0: 5479672 kern, 717 user, 0 idle)
+sys161: 1346 irqs 23 exns 0r/0w disk 0r/709w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.266159 seconds (25.711 mhz)
+sys161: Elapsed virtual time: 0.273729097 seconds (25 mhz)
 >SPLIT<
 >TEST=pidcheck_custom_0<
 >Program Output<
@@ -127,15 +127,15 @@ cpu0: MIPS r3000
 OS/161 kernel: p uw-testbin/pidcheck
 Unknown syscall 0
 (program name unknown): fork: No such system call
-Operation took 0.091931937 seconds
+Operation took 0.092209337 seconds
 OS/161 kernel: q
 Shutting down.
 The system is halted.
-sys161: 6878566 cycles (5385973 run, 1492593 global-idle)
-sys161:   cpu0: 5385256 kern, 717 user, 0 idle)
-sys161: 1351 irqs 24 exns 0r/0w disk 0r/710w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.278933 seconds (24.6603 mhz)
-sys161: Elapsed virtual time: 0.275142657 seconds (25 mhz)
+sys161: 6879366 cycles (5386049 run, 1493317 global-idle)
+sys161:   cpu0: 5385332 kern, 717 user, 0 idle)
+sys161: 1353 irqs 24 exns 0r/0w disk 0r/710w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.278898 seconds (24.6662 mhz)
+sys161: Elapsed virtual time: 0.275174657 seconds (25 mhz)
 >SPLIT<
 >TEST=widefork_custom_0<
 >Program Output<
@@ -167,15 +167,15 @@ OS/161 kernel: p uw-testbin/widefork
 P
 Unknown syscall 0
 (program name unknown): fork 1
-Operation took 0.090033897 seconds
+Operation took 0.090024417 seconds
 OS/161 kernel: q
 Shutting down.
 The system is halted.
-sys161: 6823738 cycles (5455223 run, 1368515 global-idle)
-sys161:   cpu0: 5454070 kern, 1153 user, 0 idle)
-sys161: 1336 irqs 30 exns 0r/0w disk 0r/694w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.278157 seconds (24.532 mhz)
-sys161: Elapsed virtual time: 0.272949537 seconds (25 mhz)
+sys161: 6825754 cycles (5462315 run, 1363439 global-idle)
+sys161:   cpu0: 5461162 kern, 1153 user, 0 idle)
+sys161: 1338 irqs 30 exns 0r/0w disk 0r/694w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.261563 seconds (26.096 mhz)
+sys161: Elapsed virtual time: 0.273030177 seconds (25 mhz)
 >SPLIT<
 >TEST=forktest_custom_1<
 >Program Output<
@@ -216,17 +216,17 @@ Unknown syscall 0
 (program name unknown): fork: No such system call
 3
 (program name unknown): Complete.
-Operation took 0.232053457 seconds
+Operation took 0.231848177 seconds
 OS/161 kernel: q
 Shutting down.
 The system is halted.
 cpu1: offline.
-sys161: 10442197 cycles (9077895 run, 1364302 global-idle)
-sys161:   cpu0: 8874292 kern, 62169 user, 141434 idle)
-sys161:   cpu1: 215155 kern, 0 user, 8862740 idle)
-sys161: 1742 irqs 3318 exns 0r/0w disk 0r/1022w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.405244 seconds (25.7677 mhz)
-sys161: Elapsed virtual time: 0.417687897 seconds (25 mhz)
+sys161: 10441574 cycles (9078757 run, 1362817 global-idle)
+sys161:   cpu0: 8874941 kern, 62169 user, 141647 idle)
+sys161:   cpu1: 215369 kern, 0 user, 8863388 idle)
+sys161: 1744 irqs 3318 exns 0r/0w disk 0r/1022w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.377705 seconds (27.6448 mhz)
+sys161: Elapsed virtual time: 0.417662977 seconds (25 mhz)
 >SPLIT<
 >TEST=onefork_custom_1<
 >Program Output<
@@ -258,17 +258,17 @@ cpu1: MIPS r3000
 OS/161 kernel: p uw-testbin/onefork
 Unknown syscall 0
 (program name unknown): fork: No such system call
-Operation took 0.093072297 seconds
+Operation took 0.090990297 seconds
 OS/161 kernel: q
 Shutting down.
 The system is halted.
 cpu1: offline.
-sys161: 6987540 cycles (5573468 run, 1414072 global-idle)
-sys161:   cpu0: 5442920 kern, 717 user, 129831 idle)
-sys161:   cpu1: 216202 kern, 0 user, 5357266 idle)
-sys161: 1384 irqs 23 exns 0r/0w disk 0r/741w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.275614 seconds (25.3526 mhz)
-sys161: Elapsed virtual time: 0.279501617 seconds (25 mhz)
+sys161: 6931262 cycles (5570177 run, 1361085 global-idle)
+sys161:   cpu0: 5427075 kern, 717 user, 142385 idle)
+sys161:   cpu1: 216109 kern, 0 user, 5354068 idle)
+sys161: 1383 irqs 23 exns 0r/0w disk 0r/741w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.268488 seconds (25.8159 mhz)
+sys161: Elapsed virtual time: 0.277250497 seconds (25 mhz)
 >SPLIT<
 >TEST=pidcheck_custom_1<
 >Program Output<
@@ -300,17 +300,17 @@ cpu1: MIPS r3000
 OS/161 kernel: p uw-testbin/pidcheck
 Unknown syscall 0
 (program name unknown): fork: No such system call
-Operation took 0.094639137 seconds
+Operation took 0.091921137 seconds
 OS/161 kernel: q
 Shutting down.
 The system is halted.
 cpu1: offline.
-sys161: 7032729 cycles (5607276 run, 1425453 global-idle)
-sys161:   cpu0: 5523045 kern, 717 user, 83514 idle)
-sys161:   cpu1: 215802 kern, 0 user, 5391474 idle)
-sys161: 1386 irqs 24 exns 0r/0w disk 0r/742w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.281176 seconds (25.0118 mhz)
-sys161: Elapsed virtual time: 0.281309177 seconds (25 mhz)
+sys161: 6966725 cycles (5608895 run, 1357830 global-idle)
+sys161:   cpu0: 5474051 kern, 717 user, 134127 idle)
+sys161:   cpu1: 215285 kern, 0 user, 5393610 idle)
+sys161: 1388 irqs 24 exns 0r/0w disk 0r/742w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.279569 seconds (24.9195 mhz)
+sys161: Elapsed virtual time: 0.278669017 seconds (25 mhz)
 >SPLIT<
 >TEST=widefork_custom_1<
 >Program Output<
@@ -343,17 +343,17 @@ OS/161 kernel: p uw-testbin/widefork
 P
 Unknown syscall 0
 (program name unknown): fork 1
-Operation took 0.091118217 seconds
+Operation took 0.089853537 seconds
 OS/161 kernel: q
 Shutting down.
 The system is halted.
 cpu1: offline.
-sys161: 6943834 cycles (5551999 run, 1391835 global-idle)
-sys161:   cpu0: 5408827 kern, 1153 user, 142019 idle)
-sys161:   cpu1: 215737 kern, 0 user, 5336262 idle)
+sys161: 6909684 cycles (5551735 run, 1357949 global-idle)
+sys161:   cpu0: 5408479 kern, 1153 user, 142103 idle)
+sys161:   cpu1: 215831 kern, 0 user, 5335904 idle)
 sys161: 1372 irqs 30 exns 0r/0w disk 0r/726w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.278420 seconds (24.9401 mhz)
-sys161: Elapsed virtual time: 0.277753377 seconds (25 mhz)
+sys161: Elapsed real time: 0.269948 seconds (25.5964 mhz)
+sys161: Elapsed virtual time: 0.276387377 seconds (25 mhz)
 >SPLIT<
 >TEST=forktest_custom_2<
 >Program Output<
@@ -396,21 +396,21 @@ Unknown syscall 0
 (program name unknown): fork: No such system call
 3
 (program name unknown): Complete.
-Operation took 0.231498657 seconds
+Operation took 0.231828977 seconds
 OS/161 kernel: q
 Shutting down.
 cpu1: offline.
 The system is halted.
 cpu2: offline.
 cpu3: offline.
-sys161: 10625009 cycles (9264509 run, 1360500 global-idle)
-sys161:   cpu0: 9158253 kern, 62168 user, 44088 idle)
-sys161:   cpu1: 236994 kern, 0 user, 9027515 idle)
-sys161:   cpu2: 237885 kern, 0 user, 9026624 idle)
-sys161:   cpu3: 239121 kern, 0 user, 9025388 idle)
-sys161: 1812 irqs 3316 exns 0r/0w disk 0r/1086w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.419975 seconds (25.2991 mhz)
-sys161: Elapsed virtual time: 0.425000377 seconds (25 mhz)
+sys161: 10637026 cycles (9275534 run, 1361492 global-idle)
+sys161:   cpu0: 9169253 kern, 62169 user, 44112 idle)
+sys161:   cpu1: 236005 kern, 0 user, 9039529 idle)
+sys161:   cpu2: 236896 kern, 0 user, 9038638 idle)
+sys161:   cpu3: 238132 kern, 0 user, 9037402 idle)
+sys161: 1815 irqs 3318 exns 0r/0w disk 0r/1086w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.420658 seconds (25.2866 mhz)
+sys161: Elapsed virtual time: 0.425481057 seconds (25 mhz)
 >SPLIT<
 >TEST=onefork_custom_2<
 >Program Output<
@@ -444,21 +444,21 @@ cccpppuuu123:::   MMMIIIPPPSSS   rrr333000000000
 OS/161 kernel: p uw-testbin/onefork
 Unknown syscall 0
 (program name unknown): fork: No such system call
-Operation took 0.091146657 seconds
+Operation took 0.091165537 seconds
 OS/161 kernel: q
 Shutting down.
 cpu1: offline.
 The system is halted.
 cpu2: offline.
 cpu3: offline.
-sys161: 7130178 cycles (5766421 run, 1363757 global-idle)
-sys161:   cpu0: 5721587 kern, 717 user, 44117 idle)
-sys161:   cpu1: 236590 kern, 0 user, 5529831 idle)
-sys161:   cpu2: 237481 kern, 0 user, 5528940 idle)
-sys161:   cpu3: 238717 kern, 0 user, 5527704 idle)
-sys161: 1455 irqs 23 exns 0r/0w disk 0r/805w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.297872 seconds (23.9371 mhz)
-sys161: Elapsed virtual time: 0.285207137 seconds (25 mhz)
+sys161: 7126305 cycles (5760813 run, 1365492 global-idle)
+sys161:   cpu0: 5716313 kern, 717 user, 43783 idle)
+sys161:   cpu1: 236709 kern, 0 user, 5524104 idle)
+sys161:   cpu2: 237600 kern, 0 user, 5523213 idle)
+sys161:   cpu3: 238836 kern, 0 user, 5521977 idle)
+sys161: 1454 irqs 23 exns 0r/0w disk 0r/805w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.287981 seconds (24.7457 mhz)
+sys161: Elapsed virtual time: 0.285052217 seconds (25 mhz)
 >SPLIT<
 >TEST=pidcheck_custom_2<
 >Program Output<
@@ -492,21 +492,21 @@ cccpppuuu123:::   MMMIIIPPPSSS   rrr333000000000
 OS/161 kernel: p uw-testbin/pidcheck
 Unknown syscall 0
 (program name unknown): fork: No such system call
-Operation took 0.092202697 seconds
+Operation took 0.092197697 seconds
 OS/161 kernel: q
 Shutting down.
 cpu1: offline.
 The system is halted.
 cpu2: offline.
 cpu3: offline.
-sys161: 7168959 cycles (5804786 run, 1364173 global-idle)
-sys161:   cpu0: 5759554 kern, 717 user, 44515 idle)
-sys161:   cpu1: 236416 kern, 0 user, 5568370 idle)
-sys161:   cpu2: 237307 kern, 0 user, 5567479 idle)
-sys161:   cpu3: 238543 kern, 0 user, 5566243 idle)
-sys161: 1462 irqs 24 exns 0r/0w disk 0r/806w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.302270 seconds (23.7171 mhz)
-sys161: Elapsed virtual time: 0.286758377 seconds (25 mhz)
+sys161: 7160428 cycles (5795145 run, 1365283 global-idle)
+sys161:   cpu0: 5750289 kern, 717 user, 44139 idle)
+sys161:   cpu1: 236885 kern, 0 user, 5558260 idle)
+sys161:   cpu2: 237776 kern, 0 user, 5557369 idle)
+sys161:   cpu3: 239012 kern, 0 user, 5556133 idle)
+sys161: 1459 irqs 24 exns 0r/0w disk 0r/806w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.304957 seconds (23.4801 mhz)
+sys161: Elapsed virtual time: 0.286417137 seconds (25 mhz)
 >SPLIT<
 >TEST=widefork_custom_2<
 >Program Output<
@@ -541,21 +541,21 @@ OS/161 kernel: p uw-testbin/widefork
 P
 Unknown syscall 0
 (program name unknown): fork 1
-Operation took 0.089656937 seconds
+Operation took 0.089958977 seconds
 OS/161 kernel: q
 Shutting down.
 cpu1: offline.
 The system is halted.
 cpu2: offline.
 cpu3: offline.
-sys161: 7088205 cycles (5731207 run, 1356998 global-idle)
-sys161:   cpu0: 5676269 kern, 1153 user, 53785 idle)
-sys161:   cpu1: 236113 kern, 0 user, 5495094 idle)
-sys161:   cpu2: 237004 kern, 0 user, 5494203 idle)
-sys161:   cpu3: 237066 kern, 0 user, 5494141 idle)
-sys161: 1441 irqs 30 exns 0r/0w disk 0r/790w console 9r/0w/3m emufs 0r/0w net
-sys161: Elapsed real time: 0.291248 seconds (24.3374 mhz)
-sys161: Elapsed virtual time: 0.283528217 seconds (25 mhz)
+sys161: 7113551 cycles (5749638 run, 1363913 global-idle)
+sys161:   cpu0: 5704365 kern, 1153 user, 44120 idle)
+sys161:   cpu1: 236751 kern, 0 user, 5512887 idle)
+sys161:   cpu2: 237642 kern, 0 user, 5511996 idle)
+sys161:   cpu3: 238878 kern, 0 user, 5510760 idle)
+sys161: 1447 irqs 30 exns 0r/0w disk 0r/790w console 9r/0w/3m emufs 0r/0w net
+sys161: Elapsed real time: 0.291179 seconds (24.4302 mhz)
+sys161: Elapsed virtual time: 0.284542057 seconds (25 mhz)
 ====== make.log ======
 mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/printf/__printf.c
 mips-harvard-os161-gcc -g -Wall -W -Wwrite-strings -Wmissing-prototypes  -std=gnu99 -mno-abicalls -fno-pic -ffixed-23 -nostdinc -I../../include -I../../dev -I. -Iincludelinks -ffreestanding -D_KERNEL -DUW -c ../../../common/libc/printf/snprintf.c
